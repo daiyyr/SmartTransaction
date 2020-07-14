@@ -1,0 +1,106 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Core\\AzureIoTPortal.Core.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Core\\AzureIoTPortal.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Core\\AzureIoTPortal.Core.csproj",
+        "projectName": "AzureIoTPortal.Core",
+        "projectPath": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Core\\AzureIoTPortal.Core.csproj",
+        "packagesPath": "C:\\Users\\Teemo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Teemo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\Public\\Documents\\Infragistics\\NuGet\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Abp.AutoMapper": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            },
+            "Abp.ZeroCore.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            },
+            "Castle.Windsor.MsDependencyInjection": {
+              "target": "Package",
+              "version": "[3.3.1, )"
+            },
+            "DocumentFormat.OpenXml": {
+              "target": "Package",
+              "version": "[2.9.1, )"
+            },
+            "Microsoft.Extensions.Configuration.EnvironmentVariables": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Configuration.UserSecrets": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "PdfSharp": {
+              "target": "Package",
+              "version": "[1.50.5147, )"
+            },
+            "System.Data.Odbc": {
+              "target": "Package",
+              "version": "[4.6.0, )"
+            }
+          },
+          "imports": [
+            "portable-net45+win8+wp8+wpa81",
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

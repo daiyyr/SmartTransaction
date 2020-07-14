@@ -1,0 +1,531 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Web.Mvc\\AzureIoTPortal.Web.Mvc.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Application\\AzureIoTPortal.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Application\\AzureIoTPortal.Application.csproj",
+        "projectName": "AzureIoTPortal.Application",
+        "projectPath": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Application\\AzureIoTPortal.Application.csproj",
+        "packagesPath": "C:\\Users\\Teemo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Teemo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\Public\\Documents\\Infragistics\\NuGet\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Core\\AzureIoTPortal.Core.csproj": {
+                "projectPath": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Core\\AzureIoTPortal.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "portable-net45+win8+wp8+wpa81",
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Core\\AzureIoTPortal.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Core\\AzureIoTPortal.Core.csproj",
+        "projectName": "AzureIoTPortal.Core",
+        "projectPath": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Core\\AzureIoTPortal.Core.csproj",
+        "packagesPath": "C:\\Users\\Teemo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Teemo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\Public\\Documents\\Infragistics\\NuGet\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Abp.AutoMapper": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            },
+            "Abp.ZeroCore.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            },
+            "Castle.Windsor.MsDependencyInjection": {
+              "target": "Package",
+              "version": "[3.3.1, )"
+            },
+            "DocumentFormat.OpenXml": {
+              "target": "Package",
+              "version": "[2.9.1, )"
+            },
+            "Microsoft.Extensions.Configuration.EnvironmentVariables": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Configuration.UserSecrets": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "PdfSharp": {
+              "target": "Package",
+              "version": "[1.50.5147, )"
+            },
+            "System.Data.Odbc": {
+              "target": "Package",
+              "version": "[4.6.0, )"
+            }
+          },
+          "imports": [
+            "portable-net45+win8+wp8+wpa81",
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.EntityFrameworkCore\\AzureIoTPortal.EntityFrameworkCore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.EntityFrameworkCore\\AzureIoTPortal.EntityFrameworkCore.csproj",
+        "projectName": "AzureIoTPortal.EntityFrameworkCore",
+        "projectPath": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.EntityFrameworkCore\\AzureIoTPortal.EntityFrameworkCore.csproj",
+        "packagesPath": "C:\\Users\\Teemo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.EntityFrameworkCore\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Teemo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\Public\\Documents\\Infragistics\\NuGet\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Core\\AzureIoTPortal.Core.csproj": {
+                "projectPath": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Core\\AzureIoTPortal.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            }
+          },
+          "imports": [
+            "portable-net45+win8+wp8+wpa81",
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Web.Core\\AzureIoTPortal.Web.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Web.Core\\AzureIoTPortal.Web.Core.csproj",
+        "projectName": "AzureIoTPortal.Web.Core",
+        "projectPath": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Web.Core\\AzureIoTPortal.Web.Core.csproj",
+        "packagesPath": "C:\\Users\\Teemo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Web.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Teemo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\Public\\Documents\\Infragistics\\NuGet\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Application\\AzureIoTPortal.Application.csproj": {
+                "projectPath": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Application\\AzureIoTPortal.Application.csproj"
+              },
+              "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.EntityFrameworkCore\\AzureIoTPortal.EntityFrameworkCore.csproj": {
+                "projectPath": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.EntityFrameworkCore\\AzureIoTPortal.EntityFrameworkCore.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Abp.AspNetCore": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            },
+            "Abp.AspNetCore.SignalR": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            },
+            "Abp.ZeroCore": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            },
+            "Microsoft.AspNetCore": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[4.0.1, )"
+            },
+            "System.ValueTuple": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            }
+          },
+          "imports": [
+            "portable-net45+win8+wp8+wpa81",
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Web.Mvc\\AzureIoTPortal.Web.Mvc.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Web.Mvc\\AzureIoTPortal.Web.Mvc.csproj",
+        "projectName": "AzureIoTPortal.Web.Mvc",
+        "projectPath": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Web.Mvc\\AzureIoTPortal.Web.Mvc.csproj",
+        "packagesPath": "C:\\Users\\Teemo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Web.Mvc\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Teemo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\Public\\Documents\\Infragistics\\NuGet\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Web.Core\\AzureIoTPortal.Web.Core.csproj": {
+                "projectPath": "C:\\Users\\Teemo\\Documents\\Visual Studio 2015\\Projects\\SmartTransaction\\aspnet-core\\src\\AzureIoTPortal.Web.Core\\AzureIoTPortal.Web.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Abp.Castle.Log4Net": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            },
+            "Abp.HangFire": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            },
+            "Abp.RedisCache": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            },
+            "AspNet.Security.OpenIdConnect.Server": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "Castle.LoggingFacility.MsLogging": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Microsoft.AspNet.Mvc": {
+              "target": "Package",
+              "version": "[5.2.7, )"
+            },
+            "Microsoft.AspNetCore.Authentication.Cookies": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.Twitter": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Diagnostics": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Hosting": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Razor.ViewCompilation": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Server.IISIntegration": {
+              "target": "Package",
+              "version": "[2.2.1, )"
+            },
+            "Microsoft.AspNetCore.Server.Kestrel": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.StaticFiles": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Azure.Devices": {
+              "target": "Package",
+              "version": "[1.18.1, )"
+            },
+            "Microsoft.Azure.EventHubs": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
+            "Microsoft.Azure.ServiceBus": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Options.ConfigurationExtensions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.BrowserLink": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "PaulMiami.AspNetCore.Mvc.Recaptcha": {
+              "target": "Package",
+              "version": "[1.2.1, )"
+            },
+            "System.IO.FileSystem": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "System.IO.FileSystem.AccessControl": {
+              "target": "Package",
+              "version": "[4.6.0, )"
+            }
+          },
+          "imports": [
+            "portable-net45+win8+wp8+wpa81",
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

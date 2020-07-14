@@ -1,0 +1,668 @@
+﻿@using AzureIoTPortal.Web.Startup
+@{
+    ViewBag.CurrentPageName = PageNames.Home; // The menu item will be active for this page.
+}
+@section styles {
+    <link href="~/lib/morris.js/morris.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/lib/igniteui/css/themes/infragistics/infragistics.theme.css" rel="stylesheet" />
+    <link href="~/lib/igniteui/css/structure/infragistics.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.min.css">
+    <link href="~/lib/morris.js/morris.css" rel="stylesheet" />
+
+    <style type="text/css">
+        .large-card {
+            height: 700px;
+        }
+    </style>
+
+
+
+
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="~/libs/morris.js/morris.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="~/plugins/jquery-jvectormap/jquery-jvectormap.css">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="~/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/libs/bootstrap-daterangepicker/daterangepicker.min.css">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="~/libs/bootstrap-wysiwyg5/bootstrap3-wysihtml5.min.css">
+
+
+
+}
+@section scripts
+{
+
+    <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+
+    <!-- Ignite UI Required Combined JavaScript Files -->
+    <script src="~/lib/igniteui/js/infragistics.core.js"></script>
+    <script src="~/lib/igniteui/js/infragistics.lob.js"></script>
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+
+    <script src="~/lib/morris.js/morris.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.min.js"></script>
+
+
+
+
+    <!-- jQuery UI -->
+    <script src="~/libs/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button);
+    </script>
+
+    <!-- Morris.js charts -->
+    <script src="~/libs/raphael/raphael.min.js"></script>
+    <script src="~/libs/morris.js/morris.min.js"></script>
+    <!-- Sparkline -->
+    <script src="~/libs/jquery-sparklines/jquery.sparkline.min.js"></script>
+    <!-- jvectormap -->
+    <script src="~/plugins/jquery-jvectormap/jquery-jvectormap.min.js"></script>
+    <script src="~/plugins/jquery-jvectormap/jquery-jvectormap-world-mill.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="~/libs/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="~/libs/moment.js/moment.min.js"></script>
+    <script src="~/libs/bootstrap-daterangepicker/daterangepicker.min.js"></script>
+    <!-- datepicker -->
+    <script src="~/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <!-- Bootstrap WYSIHTML5 -->
+    <script src="~/libs/bootstrap-wysiwyg5/bootstrap3-wysihtml5.all.min.js"></script>
+
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="~/js/pages/dashboard.js"></script>
+
+
+
+
+    <script type="text/javascript">
+        var deviceInfo = "";
+        var culDevice = "";
+        var tempDevice = "";
+        $(function () {
+            deviceInfo = @(Html.Raw(ViewBag.Devices));
+
+
+            setInterval("getTime();", 1000);
+             //tree initialization
+            $("#tree").igTree({
+                singleBranchExpand: true,
+                bindings: {
+                    textKey: 'DisplayName',
+                    valueKey: 'DisplayName',
+                    childDataProperty: 'Devices',
+                    bindings: {
+                        textKey: 'iot_id',
+                        valueKey: 'Id'
+                    }
+                },
+                dataSource: deviceInfo,
+                nodeClick: function (evt, ui) {
+                    if (ui.node.path != "0") {
+                        var deviceName = ui.node.data.iot_id;
+                        culDevice = deviceName;
+                        initDevice(deviceName);
+                        return true;
+                    }
+                }
+            });
+            initDeviceInfo();
+
+             var ref = setInterval(function(){
+                getEvents();
+                 },30*1000);
+        })
+        //取得系统当前时间
+        function getTime() {
+            var myDate = new Date();
+            var date = myDate.toLocaleDateString();
+            var hours = myDate.getHours();
+            var minutes = myDate.getMinutes();
+            var seconds = myDate.getSeconds();
+            $("#showDate").html(paddingZero(hours, 2) + ":" + paddingZero(minutes, 2) + ":" + paddingZero(seconds,2));
+        }
+         function paddingZero(num, length) {
+
+            return (Array(length).join("0") + num).slice(-length);
+        }
+
+        function initDevice(device) {
+            culDevice = device;
+            var boardTitle = 'Device "' + device + '"';
+            $("#BoardTitle").html(boardTitle);
+            for (var i = 0; i < deviceInfo.Devices.length; i++) {
+                if (deviceInfo.DeviceState[i].DeviceName == device) {
+                    var deviceState = deviceInfo.DeviceState[i];
+
+                    var boardInfo = '';
+
+                    if (deviceState.Connection.length > 0) {
+                         boardInfo +=   '<div class="col-sm-6 col-md-4">'+
+                            '<div class="thumbnail" style="text-align:center">'+
+                                '<i class="material-icons">devices</i>'+
+                                '<div class="caption">'+
+                                    '<h3>'+deviceState.Connection+'</h3>'+
+                                    '<div class="font-16">'+
+                                        'Status'+
+                                    '</div>'+
+                                    '<div class="font-10 col-grey">'+
+                                        deviceState.StateTime+
+                                    '</div>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>';
+                    }
+
+                    if (deviceState.Temperature.length > 0) {
+                         boardInfo +=   '<div class="col-sm-6 col-md-4">'+
+                            '<div class="thumbnail" style="text-align:center">'+
+                                '<i class="material-icons">devices</i>'+
+                                '<div class="caption">'+
+                                    '<h3>'+deviceState.Temperature+'</h3>'+
+                                    '<div class="font-16">'+
+                                        'Temperature'+
+                                    '</div>'+
+                                    '<div class="font-10 col-grey">'+
+                                        deviceState.StateTime+
+                                    '</div>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>';
+                    }
+
+                    if (deviceState.Humidity.length > 0) {
+                         boardInfo +=   '<div class="col-sm-6 col-md-4">'+
+                            '<div class="thumbnail" style="text-align:center">'+
+                                '<i class="material-icons">devices</i>'+
+                                '<div class="caption">'+
+                                    '<h3>'+deviceState.Humidity+'</h3>'+
+                                    '<div class="font-16">'+
+                                        'Humidity'+
+                                    '</div>'+
+                                    '<div class="font-10 col-grey">'+
+                                        deviceState.StateTime+
+                                    '</div>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>';
+                    }
+                    if (deviceState.DeviceOn.length > 0) {
+                         boardInfo +=   '<div class="col-sm-6 col-md-4">'+
+                            '<div class="thumbnail" style="text-align:center">'+
+                                '<i class="material-icons">devices</i>'+
+                                '<div class="caption">'+
+                                    '<h3>'+deviceState.DeviceOn+'</h3>'+
+                                    '<div class="font-16">'+
+                                        'Device'+
+                                    '</div>'+
+                                    '<div class="font-10 col-grey">'+
+                                        deviceState.StateTime+
+                                    '</div>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>';
+                    }
+                     if (deviceState.Value.length > 0) {
+                         boardInfo +=   '<div class="col-sm-6 col-md-4">'+
+                            '<div class="thumbnail" style="text-align:center">'+
+                                '<i class="material-icons">devices</i>'+
+                             '<div class="caption">' +
+                                '<h3>' + deviceState.Value + '</h3>' +
+                                    '<div class="font-16">'+
+                                        'Useage'+
+                                    '</div>'+
+                                    '<div class="font-10 col-grey">'+
+                                        deviceState.StateTime+
+                                    '</div>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>';
+                    }
+
+
+                    $("#board").html(boardInfo);
+                    $('#BoardChart').html('');
+                    if (deviceState.DeviceType == "AirCondition") {
+                        Morris.Area({
+                            element: 'BoardChart',
+                            behaveLikeLine: true,
+                            data: deviceState.Events,
+                            xkey: 'Time',
+                            ykeys: ['Temperature', 'Humidity'],
+                            labels: ['Temperature', 'Humidity']
+                        });
+                        $("#BoardReadingTableBody").html("");
+                        var htmlInfo = "";
+                        var lengthT = deviceState.Events.length;
+                        if (lengthT > 5)
+                            lengthT = 5;
+                        for (var i = 0; i < lengthT; i++) {
+                            var event = deviceState.Events[i];
+                            htmlInfo+=' <tr>'+
+                                            '<td>Temperature</td>' +
+                                            '<td>' + event.Temperature + '</td>' +
+                                            '<td>' + event.Time + '</td>' +
+                                '</tr>' +
+                                ' <tr>'+
+                                            '<td>Humidity</td>' +
+                                            '<td>' + event.Humidity + '</td>' +
+                                            '<td>' + event.Time + '</td>' +
+                                        '</tr>'
+                        }
+                        $("#BoardReadingTableBody").html(htmlInfo);
+                        break;
+                    }
+                    if (deviceState.DeviceType == "Light"){
+                        Morris.Area({
+                            element: 'BoardChart',
+                            behaveLikeLine: true,
+                            data: deviceState.Events,
+                            xkey: 'Time',
+                            ykeys: ['DeviceOn'],
+                            labels: ['DeviceOn']
+                        });
+
+                        $("#BoardReadingTableBody").html("");
+                        var htmlInfo = "";
+                        var lengthT = deviceState.Events.length;
+                        if (lengthT > 10)
+                            lengthT = 10;
+                        for (var i = 0; i < lengthT; i++) {
+                            var event = deviceState.Events[i];
+                            htmlInfo+=' <tr>'+
+                                            '<td>Device On</td>' +
+                                            '<td>' + event.DeviceOn + '</td>' +
+                                            '<td>' + event.Time + '</td>' +
+                                '</tr>'
+
+                        }
+                        $("#BoardReadingTableBody").html(htmlInfo);
+                        break;
+                    }
+                    if (deviceState.DeviceType == "Meter"){
+                        Morris.Area({
+                            element: 'BoardChart',
+                            behaveLikeLine: true,
+                            data: deviceState.Events,
+                            xkey: 'Time',
+                            ykeys: ['Value'],
+                            labels: ['Useage']
+                        });
+
+                        $("#BoardReadingTableBody").html("");
+                        var htmlInfo = "";
+                        var lengthT = deviceState.Events.length;
+                        if (lengthT > 10)
+                            lengthT = 10;
+                        for (var i = 0; i < lengthT; i++) {
+                            var event = deviceState.Events[i];
+                            htmlInfo+=' <tr>'+
+                                    '<td>Useage</td>' +
+                                    '<td>' + event.Value + '</td>' +
+                                            '<td>' + event.Time + '</td>' +
+                                    '</tr>'
+
+                        }
+                        $("#BoardReadingTableBody").html(htmlInfo);
+                        break;
+                    }
+
+                }
+            }
+
+            reLoadChart();
+
+        }
+
+        function reLoadChart() {
+
+            for (var i = 0; i < deviceInfo.Devices.length; i++) {
+                if (deviceInfo.DeviceState[i].DeviceName == culDevice) {
+                    var deviceState = deviceInfo.DeviceState[i];
+                     $("#BoardChart").html('');
+                    if (deviceState.DeviceType == "AirCondition") {
+                        Morris.Area({
+                            element: 'BoardChart',
+                            behaveLikeLine: true,
+                            data: deviceState.Events,
+                            xkey: 'Time',
+                            ykeys: ['Temperature', 'Humidity'],
+                            labels: ['Temperature', 'Humidity']
+                        });
+                        break;
+
+                    }
+                    if (deviceState.DeviceType == "Light") {
+
+                        Morris.Area({
+                            element: 'BoardChart',
+                            behaveLikeLine: true,
+                            data: deviceState.Events,
+                            xkey: 'Time',
+                            ykeys: ['DeviceOn'],
+                            labels: ['DeviceOn']
+                        });
+                        break;
+                    }
+                    if (deviceState.DeviceType == "Meter") {
+
+                        Morris.Area({
+                            element: 'BoardChart',
+                            behaveLikeLine: true,
+                            data: deviceState.Events,
+                            xkey: 'Time',
+                            ykeys: ['Value'],
+                            labels: ['Useage']
+                        });
+                        break;
+                    }
+                }
+            }
+        }
+        function initDeviceInfo() {
+            $("#DeviceCount").html(deviceInfo.DeviceCount);
+            $("#ConnectedDeviceCount").html(deviceInfo.DeviceConectedCount);
+            var msgCount = 0;
+            var deviceFirst = "";
+            for (var i = 0; i < deviceInfo.Devices.length; i++) {
+                msgCount += deviceInfo.Devices[i].message_count;
+                deviceFirst = deviceInfo.Devices[0].iot_id;
+            }
+
+            $("#MessageReceivedCount").html(msgCount);
+            if (culDevice.length < 1)
+                initDevice(deviceFirst);
+            else
+                initDevice(culDevice);
+
+            reLoadChart();
+        }
+
+        function getEvents() {
+            tempDevice = culDevice;
+             $.ajax({
+                type: "POST",
+                contentType: "application/json;charset=utf8",
+                url: '@Url.Action("GetEvents","IoT")',
+
+                dataType: 'json',
+                success: function (data) {
+                     var result = JSON.parse(data.result);
+                     if (result.success) {
+                         deviceInfo = JSON.parse(result.info);
+                         culDevice = tempDevice;
+                         initDeviceInfo();
+                     }
+
+
+                }
+            })
+        }
+    </script>
+
+
+}
+<div class="block-header">
+    <h2>General</h2>
+</div>
+
+<!-- Widgets -->
+<div class="row clearfix">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="info-box bg-grey hover-expand-effect">
+            <div class="icon">
+                <i class="material-icons">important_devices</i>
+            </div>
+            <div class="content">
+                <div class="text">Devices</div>
+                <div id="DeviceCount" class="number count-to" data-from="0" data-to="3" data-speed="1000" data-fresh-interval="20">0</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="info-box bg-green hover-expand-effect">
+            <div class="icon">
+                <i class="material-icons">important_devices</i>
+            </div>
+            <div class="content">
+                <div class="text">Connected Devices</div>
+                <div id="ConnectedDeviceCount" class="number count-to" data-from="0" data-to="0" data-speed="1000" data-fresh-interval="20">0</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
+        <div class="info-box bg-grey hover-expand-effect">
+            <div class="icon">
+                <i class="material-icons">access_alarm</i>
+            </div>
+            <div class="content">
+                <div class="text">Open Alarms</div>
+                <div class="number count-to" data-from="0" data-to="0" data-speed="1000" data-fresh-interval="20">0</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
+        <div class="info-box bg-red hover-expand-effect">
+            <div class="icon">
+                <i class="material-icons">access_alarm</i>
+            </div>
+            <div class="content">
+                <div class="text">Critical Alarms</div>
+                <div class="number count-to" data-from="0" data-to="0" data-speed="1000" data-fresh-interval="20">0</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
+        <div class="info-box bg-orange hover-expand-effect">
+            <div class="icon">
+                <i class="material-icons">access_alarm</i>
+            </div>
+            <div class="content">
+                <div class="text">Major Alarms</div>
+                <div class="number count-to" data-from="0" data-to="0" data-speed="1000" data-fresh-interval="20">0</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
+        <div class="info-box bg-orange hover-expand-effect">
+            <div class="icon">
+                <i class="material-icons">access_alarm</i>
+            </div>
+            <div class="content">
+                <div class="text">Minor Alarms</div>
+                <div class="number count-to" data-from="0" data-to="0" data-speed="1000" data-fresh-interval="20">0</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
+        <div class="info-box bg-yellow hover-expand-effect">
+            <div class="icon">
+                <i class="material-icons">access_alarm</i>
+            </div>
+            <div class="content">
+                <div class="text">Warning Alarms</div>
+                <div class="number count-to" data-from="0" data-to="0" data-speed="1000" data-fresh-interval="20">0</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
+        <div class="info-box bg-blue-grey hover-expand-effect">
+            <div class="icon">
+                <i class="material-icons">access_alarm</i>
+            </div>
+            <div class="content">
+                <div class="text">Message Received</div>
+                <div id="MessageReceivedCount" class="number count-to" data-from="0" data-to="0" data-speed="1000" data-fresh-interval="20">0</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END# Widgets -->
+
+<div class="row clearfix iot-info">
+    <!-- Visitors -->
+    <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <div class=" large-card card">
+            <div class="body ">
+                <div class="font-underline font-30">Uxtrata Limited</div>
+                <div class="font-20">Smart Business</div>
+                <div class="font-18">@DateTime.Now.ToString("dddd, dd MMMM yyyy")</div>
+                <div id="showDate" class="font-26"></div>
+                <div id="tree"></div>
+            </div>
+        </div>
+    </div>
+    <!-- #END# Visitors -->
+    <!-- Latest Social Trends -->
+    <div class="col-xs-8 col-sm-8 col-md-4 col-lg-4">
+        <div class="card large-card">
+            <div class="body">
+                <div class="m-b--35 font-bold">Google Map</div>
+                <div style="margin-top:88px">
+                    <div id="map" style="height:400px"></div>
+                    <script type="text/javascript">
+
+                        var map, infoWindow;
+
+
+                        function initMap() {
+                            var pos = {
+                                lat: -36.8570142, lng: 174.7646831
+                            };
+
+                            map = new google.maps.Map(document.getElementById('map'), {
+                                center: pos,
+                                position: pos,
+                                zoom: 16
+                            });
+
+                            var marker = new google.maps.Marker({
+                                position: pos,
+                                map: map,
+                                title: 'Uxtrata Marker'
+                            });
+
+                            infoWindow = new google.maps.InfoWindow;
+
+
+
+
+                            infoWindow.setPosition(pos);
+                            infoWindow.setContent('Uxtrata Ltd.');
+                            infoWindow.open(map, marker);
+
+
+
+
+                        }
+
+
+
+                    </script>
+
+                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpMeLo3y2QZHfHUhA5Lrpg7T-6V6Vyll0&callback=initMap"></script>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- #END# Latest Social Trends -->
+    <!-- Answered Tickets -->
+    <div class="col-xs-8 col-sm-8 col-md-4 col-lg-4">
+        <div class="card large-card">
+            <div class="body">
+                <div id="BoardTitle" class="font-24 header" style="padding:10px;">Device "Door and Movement"</div>
+                <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                    <li role="presentation" class=""><a href="#board" data-toggle="tab" aria-expanded="true">Board</a></li>
+                    <li role="presentation" class="active"><a href="#chart" onclick="setTimeout('reLoadChart()',300);" data-toggle="tab" aria-expanded="false">Chart</a></li>
+                    <li role="presentation" class=""><a href="#readings" data-toggle="tab" aria-expanded="false">Readings</a></li>
+
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade" id="board">
+                        @*<div class="col-sm-6 col-md-4">
+                                <div class="thumbnail" style="text-align:center">
+                                    <i class="material-icons">devices</i>
+                                    <div class="caption">
+                                        <h3 id="BoardConnectionState">Disconnected</h3>
+                                        <div class="font-16">
+                                            Status
+                                        </div>
+                                        <div id="BoardConnectionTime" class="font-10 col-grey">
+                                            Sep 1 2019, 8:55:45 PM
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail" style="text-align:center">
+                                    <i class="material-icons">devices</i>
+                                    <div class="caption">
+                                        <h3 id="BoardTemperature">Open</h3>
+                                        <div class="font-16">
+                                            Temperature
+                                        </div>
+                                        <div id="BoardTemperatureTime" class="font-10 col-grey">
+                                            Sep 1 2019, 8:55:45 PM
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail" style="text-align:center">
+                                    <i class="material-icons">devices</i>
+                                    <div class="caption">
+                                        <h3 id="BoardHumidity">No Motion</h3>
+                                        <div class="font-16">
+                                            Humidity
+                                        </div>
+                                        <div id="BoardHumidityTime" class="font-10 col-grey">
+                                            Sep 1 2019, 8:55:45 PM
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade active in" id="chart">
+                        <b>Chart</b>
+                        <div id="BoardChart"></div>
+
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="readings">
+
+                        <table class="table table-hover table-striped">
+                            <caption>Readings</caption>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Value</th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody id="BoardReadingTableBody">
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #END# Answered Tickets -->
+    <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <div class="card large-card">
+            <div class="body">
+                <div class="font-24 header" style="padding:10px;">Alarms</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

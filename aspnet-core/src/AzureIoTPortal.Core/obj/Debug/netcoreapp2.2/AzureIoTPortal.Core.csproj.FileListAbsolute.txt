@@ -1,0 +1,25 @@
+D:\Project\running\AzureIoT\AbpPortal\aspnet-core\src\AzureIoTPortal.Core\bin\Debug\netcoreapp2.2\AzureIoTPortal.Core.deps.json
+D:\Project\running\AzureIoT\AbpPortal\aspnet-core\src\AzureIoTPortal.Core\bin\Debug\netcoreapp2.2\AzureIoTPortal.Core.dll
+D:\Project\running\AzureIoT\AbpPortal\aspnet-core\src\AzureIoTPortal.Core\bin\Debug\netcoreapp2.2\AzureIoTPortal.Core.pdb
+D:\Project\running\AzureIoT\AbpPortal\aspnet-core\src\AzureIoTPortal.Core\obj\Debug\netcoreapp2.2\AzureIoTPortal.Core.csprojAssemblyReference.cache
+D:\Project\running\AzureIoT\AbpPortal\aspnet-core\src\AzureIoTPortal.Core\obj\Debug\netcoreapp2.2\AzureIoTPortal.Core.csproj.CoreCompileInputs.cache
+D:\Project\running\AzureIoT\AbpPortal\aspnet-core\src\AzureIoTPortal.Core\obj\Debug\netcoreapp2.2\AzureIoTPortal.Core.AssemblyInfoInputs.cache
+D:\Project\running\AzureIoT\AbpPortal\aspnet-core\src\AzureIoTPortal.Core\obj\Debug\netcoreapp2.2\AzureIoTPortal.Core.AssemblyInfo.cs
+D:\Project\running\AzureIoT\AbpPortal\aspnet-core\src\AzureIoTPortal.Core\obj\Debug\netcoreapp2.2\AzureIoTPortal.Core.dll
+D:\Project\running\AzureIoT\AbpPortal\aspnet-core\src\AzureIoTPortal.Core\obj\Debug\netcoreapp2.2\AzureIoTPortal.Core.pdb
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\abpIotPortal\aspnet-core\src\AzureIoTPortal.Core\obj\Debug\netcoreapp2.2\AzureIoTPortal.Core.AssemblyInfoInputs.cache
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\abpIotPortal\aspnet-core\src\AzureIoTPortal.Core\obj\Debug\netcoreapp2.2\AzureIoTPortal.Core.AssemblyInfo.cs
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\abpIotPortal\aspnet-core\src\AzureIoTPortal.Core\obj\Debug\netcoreapp2.2\AzureIoTPortal.Core.dll
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\abpIotPortal\aspnet-core\src\AzureIoTPortal.Core\obj\Debug\netcoreapp2.2\AzureIoTPortal.Core.pdb
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\abpIotPortal\aspnet-core\src\AzureIoTPortal.Core\bin\Debug\netcoreapp2.2\AzureIoTPortal.Core.deps.json
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\abpIotPortal\aspnet-core\src\AzureIoTPortal.Core\bin\Debug\netcoreapp2.2\AzureIoTPortal.Core.dll
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\abpIotPortal\aspnet-core\src\AzureIoTPortal.Core\bin\Debug\netcoreapp2.2\AzureIoTPortal.Core.pdb
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\abpIotPortal\aspnet-core\src\AzureIoTPortal.Core\obj\Debug\netcoreapp2.2\AzureIoTPortal.Core.csprojAssemblyReference.cache
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Core\bin\Debug\netcoreapp2.2\AzureIoTPortal.Core.deps.json
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Core\bin\Debug\netcoreapp2.2\AzureIoTPortal.Core.dll
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Core\bin\Debug\netcoreapp2.2\AzureIoTPortal.Core.pdb
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Core\obj\Debug\netcoreapp2.2\AzureIoTPortal.Core.csprojAssemblyReference.cache
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Core\obj\Debug\netcoreapp2.2\AzureIoTPortal.Core.AssemblyInfoInputs.cache
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Core\obj\Debug\netcoreapp2.2\AzureIoTPortal.Core.AssemblyInfo.cs
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Core\obj\Debug\netcoreapp2.2\AzureIoTPortal.Core.dll
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Core\obj\Debug\netcoreapp2.2\AzureIoTPortal.Core.pdb
