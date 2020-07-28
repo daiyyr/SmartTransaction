@@ -35,13 +35,12 @@ namespace AzureIoTPortal.Web.Startup
             );
 
             //SMS DB, using Microsoft.EntityFrameworkCore.DBContext
-            services.AddEntityFrameworkMySql();
-
-            services.AddDbContextPool<SMSDbContext>((serviceProvider, optionsBuilder) =>
-            {
-                optionsBuilder.UseMySql(_appConfiguration.GetConnectionString("SMS"));
-                optionsBuilder.UseInternalServiceProvider(serviceProvider);
-            });
+            //services.AddEntityFrameworkMySql();
+            //services.AddDbContextPool<SMSDbContext>((serviceProvider, optionsBuilder) =>
+            //{
+            //    optionsBuilder.UseMySql(_appConfiguration.GetConnectionString("SMS"));
+            //    optionsBuilder.UseInternalServiceProvider(serviceProvider);
+            //});
 
             //services.AddDbContextPool<SMSDbContext>(options => options.UseMySql(_appConfiguration.GetConnectionString("SMS")));
 

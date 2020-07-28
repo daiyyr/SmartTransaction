@@ -111,10 +111,10 @@
                                             </td>
                                             <td>@doc.By</td>
                                             <td>
-                                                <form>
+                                                <form role="form" action="#" method="post">
                                                     <input id="@doc.Name" style="display:none" />
                                                     <div class="card-footer">
-                                                        <button type="submit" class="btn btn-primary">Processed</button>
+                                                        <a class="btn btn-primary" href='@Url.Action("Process", "Documents", new { foldername = folder.Name, documentname = @doc.Name })'>Mark as Processed</a>
                                                     </div>
                                                 </form>
                                             </td>

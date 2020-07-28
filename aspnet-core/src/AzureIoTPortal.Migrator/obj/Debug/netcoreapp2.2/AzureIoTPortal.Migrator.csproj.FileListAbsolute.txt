@@ -17,3 +17,21 @@ D:\Project\running\AzureIoT\AbpPortal\aspnet-core\src\AzureIoTPortal.Migrator\ob
 D:\Project\running\AzureIoT\AbpPortal\aspnet-core\src\AzureIoTPortal.Migrator\obj\Debug\netcoreapp2.2\AzureIoTPortal.Migrator.csproj.CopyComplete
 D:\Project\running\AzureIoT\AbpPortal\aspnet-core\src\AzureIoTPortal.Migrator\obj\Debug\netcoreapp2.2\AzureIoTPortal.Migrator.dll
 D:\Project\running\AzureIoT\AbpPortal\aspnet-core\src\AzureIoTPortal.Migrator\obj\Debug\netcoreapp2.2\AzureIoTPortal.Migrator.pdb
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Migrator\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Migrator\bin\Debug\netcoreapp2.2\log4net.config
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Migrator\bin\Debug\netcoreapp2.2\AzureIoTPortal.Migrator.deps.json
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Migrator\bin\Debug\netcoreapp2.2\AzureIoTPortal.Migrator.runtimeconfig.json
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Migrator\bin\Debug\netcoreapp2.2\AzureIoTPortal.Migrator.runtimeconfig.dev.json
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Migrator\bin\Debug\netcoreapp2.2\AzureIoTPortal.Migrator.dll
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Migrator\bin\Debug\netcoreapp2.2\AzureIoTPortal.Migrator.pdb
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Migrator\bin\Debug\netcoreapp2.2\AzureIoTPortal.Core.dll
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Migrator\bin\Debug\netcoreapp2.2\AzureIoTPortal.EntityFrameworkCore.dll
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Migrator\bin\Debug\netcoreapp2.2\AzureIoTPortal.Core.pdb
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Migrator\bin\Debug\netcoreapp2.2\AzureIoTPortal.EntityFrameworkCore.pdb
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Migrator\bin\Debug\netcoreapp2.2\AzureIoTPortal.EntityFrameworkCore.dll.config
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Migrator\obj\Debug\netcoreapp2.2\AzureIoTPortal.Migrator.csprojAssemblyReference.cache
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Migrator\obj\Debug\netcoreapp2.2\AzureIoTPortal.Migrator.AssemblyInfoInputs.cache
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Migrator\obj\Debug\netcoreapp2.2\AzureIoTPortal.Migrator.AssemblyInfo.cs
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Migrator\obj\Debug\netcoreapp2.2\AzureIoTPortal.Migrator.csproj.CopyComplete
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Migrator\obj\Debug\netcoreapp2.2\AzureIoTPortal.Migrator.dll
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Migrator\obj\Debug\netcoreapp2.2\AzureIoTPortal.Migrator.pdb

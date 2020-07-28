@@ -20,3 +20,24 @@ D:\Project\running\AzureIoT\AbpPortal\aspnet-core\test\AzureIoTPortal.Tests\obj\
 D:\Project\running\AzureIoT\AbpPortal\aspnet-core\test\AzureIoTPortal.Tests\obj\Debug\netcoreapp2.2\AzureIoTPortal.Tests.csproj.CopyComplete
 D:\Project\running\AzureIoT\AbpPortal\aspnet-core\test\AzureIoTPortal.Tests\obj\Debug\netcoreapp2.2\AzureIoTPortal.Tests.dll
 D:\Project\running\AzureIoT\AbpPortal\aspnet-core\test\AzureIoTPortal.Tests\obj\Debug\netcoreapp2.2\AzureIoTPortal.Tests.pdb
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\test\AzureIoTPortal.Tests\bin\Debug\netcoreapp2.2\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\test\AzureIoTPortal.Tests\bin\Debug\netcoreapp2.2\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\test\AzureIoTPortal.Tests\bin\Debug\netcoreapp2.2\xunit.runner.utility.netcoreapp10.dll
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\test\AzureIoTPortal.Tests\bin\Debug\netcoreapp2.2\AzureIoTPortal.Tests.deps.json
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\test\AzureIoTPortal.Tests\bin\Debug\netcoreapp2.2\AzureIoTPortal.Tests.runtimeconfig.json
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\test\AzureIoTPortal.Tests\bin\Debug\netcoreapp2.2\AzureIoTPortal.Tests.runtimeconfig.dev.json
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\test\AzureIoTPortal.Tests\bin\Debug\netcoreapp2.2\AzureIoTPortal.Tests.dll
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\test\AzureIoTPortal.Tests\bin\Debug\netcoreapp2.2\AzureIoTPortal.Tests.pdb
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\test\AzureIoTPortal.Tests\bin\Debug\netcoreapp2.2\AzureIoTPortal.Application.dll
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\test\AzureIoTPortal.Tests\bin\Debug\netcoreapp2.2\AzureIoTPortal.Core.dll
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\test\AzureIoTPortal.Tests\bin\Debug\netcoreapp2.2\AzureIoTPortal.EntityFrameworkCore.dll
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\test\AzureIoTPortal.Tests\bin\Debug\netcoreapp2.2\AzureIoTPortal.Application.pdb
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\test\AzureIoTPortal.Tests\bin\Debug\netcoreapp2.2\AzureIoTPortal.EntityFrameworkCore.pdb
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\test\AzureIoTPortal.Tests\bin\Debug\netcoreapp2.2\AzureIoTPortal.EntityFrameworkCore.dll.config
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\test\AzureIoTPortal.Tests\bin\Debug\netcoreapp2.2\AzureIoTPortal.Core.pdb
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\test\AzureIoTPortal.Tests\obj\Debug\netcoreapp2.2\AzureIoTPortal.Tests.csprojAssemblyReference.cache
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\test\AzureIoTPortal.Tests\obj\Debug\netcoreapp2.2\AzureIoTPortal.Tests.AssemblyInfoInputs.cache
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\test\AzureIoTPortal.Tests\obj\Debug\netcoreapp2.2\AzureIoTPortal.Tests.AssemblyInfo.cs
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\test\AzureIoTPortal.Tests\obj\Debug\netcoreapp2.2\AzureIoTPortal.Tests.csproj.CopyComplete
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\test\AzureIoTPortal.Tests\obj\Debug\netcoreapp2.2\AzureIoTPortal.Tests.dll
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\test\AzureIoTPortal.Tests\obj\Debug\netcoreapp2.2\AzureIoTPortal.Tests.pdb

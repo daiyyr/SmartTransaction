@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Processed Transactions";
 }
 
@@ -30,7 +31,6 @@
     <link rel="stylesheet" href="~/plugins/fullcalendar-timegrid/main.min.css">
     <link rel="stylesheet" href="~/plugins/fullcalendar-bootstrap/main.min.css">
     <!-- Theme style -->
-
     @*<link rel="stylesheet" href="~/dist/css/adminlte.min.css">*@
 
     <!-- Google Font: Source Sans Pro -->
@@ -52,9 +52,17 @@
 
 
     <script type="text/javascript">
-
-
     </script>
+
+    @if (TempData["Message"] != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@TempData["Message"]");
+            };
+        </script>
+    }
+
 
 }
 
@@ -101,14 +109,14 @@
                                         <th>Date</th>
                                         <th>Status</th>
                                         <th>By</th>
-                                        <th>Upload Decline List</th>
+                                        <th>Upload Approval List</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var doc in folder.documents)
                                     {
                                         <tr>
-                                            <td><a href='@Url.Action("Download", "Documents", new { foldername = folder.Name, documentname = @doc.Name })'>@doc.Name</a></td>
+                                            <td><a href='@Url.Action("DownloadProcessed", "Documents", new { foldername = folder.Name, documentname = @doc.Name })'>@doc.Name</a></td>
                                             <td>@doc.Date</td>
                                             <td>
                                                 @if (doc.New)
@@ -118,15 +126,18 @@
                                             </td>
                                             <td>@doc.By</td>
                                             <td>
-                                                <form>
-                                                    <input id="@doc.Name" style="display:none" />
-
+                                                <form asp-controller="Documents" asp-action="Approve" method="post" enctype="multipart/form-data">
+                                                    <input name="HiddenFoldername" style="display:none" value="@folder.Name" />
+                                                    <input name="HiddenDocumentname" style="display:none" value="@doc.Name" />
 
                                                     <div class="input-group">
                                                         <div class="custom-file" style="display:flex">
-                                                            <input type="file" class="custom-file-input" id="exampleInputFile" style="width: 200px;">
+
+                                                            <input type="file" class="custom-file-input" name="file" style="width: 200px;">
                                                             @*<label class="custom-file-label" for="exampleInputFile">Choose Decline List</label>*@
+                                                            @*<a class="btn btn-primary" href='@Url.Action("Approve", "Documents", new { foldername = folder.Name, documentname = @doc.Name })'>Upload</a>*@
                                                             <button type="submit" class="btn btn-primary">Upload</button>
+
                                                         </div>
 
                                                     </div>

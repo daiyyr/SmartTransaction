@@ -26,6 +26,9 @@ using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Security.AccessControl;
+using System.Threading.Tasks;
+using System.Net;
+using System.Configuration;
 
 namespace AzureIoTPortal.Web.Controllers
 {
@@ -36,7 +39,7 @@ namespace AzureIoTPortal.Web.Controllers
         private readonly ISystemConfigAppService _SystemConfigAppService;
 
 
-        private readonly SMSDbContext _dbSMS;
+        //private readonly SMSDbContext _dbSMS;
         //private readonly IRepository<Bodycorp> _BodycorpRepository;
         private readonly IBodycorpAppService _BodycorpAppService;
 
@@ -48,7 +51,7 @@ namespace AzureIoTPortal.Web.Controllers
 
 
         public DocumentsController(IDeviceAppService deviceAppServcie, ISystemConfigAppService systemConfigAppService
-            , SMSDbContext dbSMS
+            //, SMSDbContext dbSMS
             //,IRepository<Bodycorp> BodycorpRepository
             , IBodycorpAppService bodycorpAppService
             , IHostingEnvironment env
@@ -61,7 +64,7 @@ namespace AzureIoTPortal.Web.Controllers
             _UserAppService = UserAppService;
 
 
-            _dbSMS = dbSMS;
+            //_dbSMS = dbSMS;
             //_BodycorpRepository = BodycorpRepository;
 
             _appConfiguration = env.GetAppConfiguration();
@@ -91,21 +94,23 @@ namespace AzureIoTPortal.Web.Controllers
             s.LoadData("FILEFOLDER");
             string fileFolder = s.system_value;
             var user_dto = _UserAppService.GetCurrentUserSMSInfo(conn_iot, conn_sms);
-            string bcFolder = Path.Combine(
+            string bankFolder = Path.Combine(
                 fileFolder,
-                AdFunction.GetCleanCode(user_dto.Result.BodycorpCode[0])
+                //   AdFunction.GetCleanCode(user_dto.Result.BodycorpCode[0])
+                "SmartTransaction", "bank"
                 );
 
-            DirectoryInfo bcfolderinfo = new DirectoryInfo(bcFolder); // C:/SMS/BC_CODE
+            Directory.CreateDirectory(bankFolder);
+            DirectoryInfo bcfolderinfo = new DirectoryInfo(bankFolder); // C:/SMS/SmartTransaction/bank
             DirectoryInfo[] subFolders = bcfolderinfo.GetDirectories().OrderBy(p => p.Name).ToArray();
             List<PortalFolder> folders = new List<PortalFolder>();
-            foreach(DirectoryInfo di in subFolders) // C:/SMS/BC_CODE/Invoice
+            foreach(DirectoryInfo di in subFolders) // C:/SMS/SmartTransaction/bank/Westpac
             {
                 PortalFolder pf = new PortalFolder();
                 pf.Name = di.Name;
                 List<PortalDocument> docs = new List<PortalDocument>(); 
                 FileInfo[] files = di.GetFiles().OrderByDescending(p => p.CreationTime).ToArray();
-                foreach (FileInfo file in files) // C:/SMS/BC_CODE/Invoice/INV0728.pdf
+                foreach (FileInfo file in files) // C:/SMS/SmartTransaction/bank/Westpac/xxxxxxx.zip
                 {
                     docs.Add(
                         new PortalDocument
@@ -149,6 +154,194 @@ namespace AzureIoTPortal.Web.Controllers
             return View();
         }
 
+        public FileResult Download(string foldername, string documentname)
+        {
+            Odbc o = new Odbc(conn_sms);
+            SMS.system s = new SMS.system(conn_sms);
+            s.SetOdbc(o);
+            s.LoadData("FILEFOLDER");
+            string fileFolder = s.system_value;
+
+            //var user_dto = _UserAppService.GetCurrentUserSMSInfo(conn_iot, conn_sms);
+            o.Close();
+
+            string bankFolder = Path.Combine(
+                fileFolder,
+                //   AdFunction.GetCleanCode(user_dto.Result.BodycorpCode[0])
+                "SmartTransaction", "bank"
+                );
+
+            string file = Path.Combine(
+                bankFolder,
+                foldername, //Westpac or ASB
+                documentname
+                );
+
+            FileInfo fi = new FileInfo(file);
+
+            //try path without unit code
+            if (!fi.Exists)
+            {
+                
+            }
+
+            if (!fi.Exists)
+            {
+                throw new Exception("File does not exist. Please contact Admin.");
+            }
+
+            byte[] fileBytes = System.IO.File.ReadAllBytes(file);
+            string fileName = documentname;
+            string filetype = System.Net.Mime.MediaTypeNames.Application.Zip;
+            if (!fileName.ToLower().EndsWith("zip"))
+            {
+                filetype = System.Net.Mime.MediaTypeNames.Application.Zip;
+            }
+            return File(fileBytes, filetype, fileName);
+        }
+
+
+        public FileResult DownloadProcessed(string foldername, string documentname)
+        {
+            Odbc o = new Odbc(conn_sms);
+            SMS.system s = new SMS.system(conn_sms);
+            s.SetOdbc(o);
+            s.LoadData("FILEFOLDER");
+            string fileFolder = s.system_value;
+
+            //var user_dto = _UserAppService.GetCurrentUserSMSInfo(conn_iot, conn_sms);
+            o.Close();
+
+            string bankFolder = Path.Combine(
+                fileFolder,
+                //   AdFunction.GetCleanCode(user_dto.Result.BodycorpCode[0])
+                "SmartTransaction", "processed"
+                );
+
+            string file = Path.Combine(
+                bankFolder,
+                foldername, //Westpac or ASB
+                documentname
+                );
+
+            FileInfo fi = new FileInfo(file);
+
+            //try path without unit code
+            if (!fi.Exists)
+            {
+
+            }
+
+            if (!fi.Exists)
+            {
+                throw new Exception("File does not exist. Please contact Admin.");
+            }
+
+            byte[] fileBytes = System.IO.File.ReadAllBytes(file);
+            string fileName = documentname;
+            string filetype = System.Net.Mime.MediaTypeNames.Application.Zip;
+            if (!fileName.ToLower().EndsWith("zip"))
+            {
+                filetype = System.Net.Mime.MediaTypeNames.Application.Zip;
+            }
+            return File(fileBytes, filetype, fileName);
+        }
+
+        public ActionResult Process(string foldername, string documentname)
+        {
+            Odbc o = new Odbc(conn_sms);
+            SMS.system s = new SMS.system(conn_sms);
+            s.SetOdbc(o);
+            s.LoadData("FILEFOLDER");
+            string fileFolder = s.system_value;
+
+            string processedFolder = Path.Combine(
+                fileFolder,
+                //   AdFunction.GetCleanCode(user_dto.Result.BodycorpCode[0])
+                "SmartTransaction", "processed"
+                );
+            string bankFolder = Path.Combine(
+                fileFolder,
+                //   AdFunction.GetCleanCode(user_dto.Result.BodycorpCode[0])
+                "SmartTransaction", "bank"
+                );
+            string source = Path.Combine(
+                bankFolder,
+                foldername, //Westpac or ASB
+                documentname
+                );
+            string target = Path.Combine(
+                processedFolder,
+                foldername, //Westpac or ASB
+                documentname
+                );
+
+            #region trigger SMS
+            int maxRetry = 5;
+            int retry = 0;
+            CookieCollection cookie = new CookieCollection();
+            Spider sp = new Spider();
+
+            string smsHost = _appConfiguration.GetConnectionString("smsHost");
+            string smsLoginPostFirstLine = _appConfiguration.GetConnectionString("smsLoginPostFirstLine");
+            string smsUserName = _appConfiguration.GetConnectionString("smsUserName");
+            string smsUserPassword = _appConfiguration.GetConnectionString("smsUserPassword");
+            string smsLoginSelectedBcId = _appConfiguration.GetConnectionString("smsLoginSelectedBcId");
+
+            if (smsHost.Contains("/"))      //      localhost/sapp_sms2
+            {
+                int charLocation = smsHost.IndexOf("/", StringComparison.Ordinal);
+
+                if (charLocation > 0)
+                {
+                    Spider.gHost = smsHost.Substring(0, charLocation);
+                }
+            }
+            else
+            {
+                Spider.gHost = smsHost;     //          localhost:32553 
+            }
+            FileInfo fi = new FileInfo(target);
+            string filenameP = Path.GetFileNameWithoutExtension(fi.Name);
+            string date = filenameP.Substring(filenameP.Length - 8);
+
+            string test = sp.sendRequest("http://" + smsHost + "/login.aspx",
+                "POST",
+                "",
+                true,
+                smsLoginPostFirstLine
+                + smsUserName + "&TextBoxPassword="
+                + smsUserPassword + "&bcSearchBox=&DropDownList1=" + smsLoginSelectedBcId + "&ButtonLogin=Login",
+                ref cookie,
+                Spider.gHost,
+                true
+                );
+
+            test = sp.sendRequest("http://" + smsHost + "/cinvoicebatch.aspx?smarttransaction=commit&bank="
+                     + foldername + "&date=" + date,
+                 "GET",
+                 "",
+                 true,
+                 @"",
+                 ref cookie,
+                 Spider.gHost,
+                 true
+                 );
+            #endregion
+
+            #region move file
+            Directory.CreateDirectory(Path.Combine(processedFolder, foldername));
+            if (System.IO.File.Exists(target))
+            {
+                System.IO.File.Delete(target);
+            }
+            System.IO.File.Move(source, target);
+            
+            #endregion
+            
+
+            return RedirectToAction("Index", "Documents");
+        }
 
         public ActionResult ProcessedTransaction()
         {
@@ -158,12 +351,14 @@ namespace AzureIoTPortal.Web.Controllers
             s.LoadData("FILEFOLDER");
             string fileFolder = s.system_value;
             var user_dto = _UserAppService.GetCurrentUserSMSInfo(conn_iot, conn_sms);
-            string bcFolder = Path.Combine(
+            string processedFolder = Path.Combine(
                 fileFolder,
-                AdFunction.GetCleanCode(user_dto.Result.BodycorpCode[0])
+                //   AdFunction.GetCleanCode(user_dto.Result.BodycorpCode[0])
+                "SmartTransaction", "processed"
                 );
 
-            DirectoryInfo bcfolderinfo = new DirectoryInfo(bcFolder); // C:/SMS/BC_CODE
+            DirectoryInfo bcfolderinfo = new DirectoryInfo(processedFolder); // C:/SMS/BC_CODE
+            Directory.CreateDirectory(processedFolder);
             DirectoryInfo[] subFolders = bcfolderinfo.GetDirectories().OrderBy(p => p.Name).ToArray();
             List<PortalFolder> folders = new List<PortalFolder>();
             foreach (DirectoryInfo di in subFolders) // C:/SMS/BC_CODE/Invoice
@@ -216,9 +411,7 @@ namespace AzureIoTPortal.Web.Controllers
             return View();
         }
 
-
-
-        public FileResult Download(string foldername, string documentname)
+        public ActionResult Approve(string foldername, string documentname)
         {
             Odbc o = new Odbc(conn_sms);
             SMS.system s = new SMS.system(conn_sms);
@@ -226,42 +419,191 @@ namespace AzureIoTPortal.Web.Controllers
             s.LoadData("FILEFOLDER");
             string fileFolder = s.system_value;
 
-            var user_dto = _UserAppService.GetCurrentUserSMSInfo(conn_iot, conn_sms);
-            string file = Path.Combine(
-                fileFolder, 
-                AdFunction.GetCleanCode(user_dto.Result.BodycorpCode[0]),
-                foldername, //document type
-                AdFunction.GetCleanCode(user_dto.Result.UnitCode[0]),
-                documentname
-                );
-
-            FileInfo fi = new FileInfo(file);
-
-            //try path without unit code
-            if (!fi.Exists)
-            {
-                file = Path.Combine(
+            string dataFolder = Path.Combine(
                 fileFolder,
-                AdFunction.GetCleanCode(user_dto.Result.BodycorpCode[0]),
-                foldername, //document type
-                documentname
+                //   AdFunction.GetCleanCode(user_dto.Result.BodycorpCode[0])
+                "SmartTransaction", "data"
                 );
-                fi = new FileInfo(file);
+            string bankFolder = Path.Combine(
+                fileFolder,
+                //   AdFunction.GetCleanCode(user_dto.Result.BodycorpCode[0])
+                "SmartTransaction", "bank"
+                );
+
+            FileInfo fi = new FileInfo(documentname);
+            string filenameP = Path.GetFileNameWithoutExtension(fi.Name);
+            string date = filenameP.Substring(filenameP.Length - 8);
+
+            string target = Path.Combine(
+                dataFolder,
+                foldername + "PaymentApproval" + date + ".csv" //WestpacPaymentApproval20200719.csv
+                );
+
+            if(Request.Form.Files.Count == 0)
+            {
+                return RedirectToAction("ProcessedTransaction", "Documents");
             }
 
-            if (!fi.Exists)
+            
+            var file = Request.Form.Files[0];
+            using (var fileStream = new FileStream(target, FileMode.Create))
             {
-                throw new Exception("File does not exist. Please contact Admin.");
+                file.CopyTo(fileStream);
             }
 
-            byte[] fileBytes = System.IO.File.ReadAllBytes(file);
-            string fileName = documentname;
-            string filetype = System.Net.Mime.MediaTypeNames.Application.Pdf;
-            if (!fileName.ToLower().EndsWith("pdf"))
+            #region trigger SMS
+            int maxRetry = 5;
+            int retry = 0;
+            CookieCollection cookie = new CookieCollection();
+            Spider sp = new Spider();
+
+            string smsHost = _appConfiguration.GetConnectionString("smsHost");
+            string smsLoginPostFirstLine = _appConfiguration.GetConnectionString("smsLoginPostFirstLine");
+            string smsUserName = _appConfiguration.GetConnectionString("smsUserName");
+            string smsUserPassword = _appConfiguration.GetConnectionString("smsUserPassword");
+            string smsLoginSelectedBcId = _appConfiguration.GetConnectionString("smsLoginSelectedBcId");
+
+            if (smsHost.Contains("/"))      //      localhost/sapp_sms2
             {
-                filetype = System.Net.Mime.MediaTypeNames.Application.Zip;
+                int charLocation = smsHost.IndexOf("/", StringComparison.Ordinal);
+
+                if (charLocation > 0)
+                {
+                    Spider.gHost = smsHost.Substring(0, charLocation);
+                }
             }
-            return File(fileBytes, filetype, fileName);
+            else
+            {
+                Spider.gHost = smsHost;     //          localhost:32553 
+            }
+
+            string test = sp.sendRequest("http://" + smsHost + "/login.aspx",
+                "POST",
+                "",
+                true,
+                smsLoginPostFirstLine
+                + smsUserName + "&TextBoxPassword="
+                + smsUserPassword + "&bcSearchBox=&DropDownList1=" + smsLoginSelectedBcId + "&ButtonLogin=Login",
+                ref cookie,
+                Spider.gHost,
+                true
+                );
+
+            test = sp.sendRequest("http://" + smsHost + "/cinvoicebatch.aspx?smarttransaction=approve&bank="
+                     + foldername + "&date=" + date,
+                 "GET",
+                 "",
+                 true,
+                 @"",
+                 ref cookie,
+                 Spider.gHost,
+                 true
+                 );
+            #endregion
+            
+
+            return RedirectToAction("ProcessedTransaction", "Documents");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Approve(Microsoft.AspNetCore.Http.IFormFile file)
+        {
+
+            if (file == null || file.Length == 0)
+            {
+                TempData["Message"] = string.Format("No file selected");
+                return RedirectToAction("ProcessedTransaction");
+            }
+
+            Odbc o = new Odbc(conn_sms);
+            SMS.system s = new SMS.system(conn_sms);
+            s.SetOdbc(o);
+            s.LoadData("FILEFOLDER");
+            string fileFolder = s.system_value;
+            o.Close();
+
+            string dataFolder = Path.Combine(
+                fileFolder,
+                //   AdFunction.GetCleanCode(user_dto.Result.BodycorpCode[0])
+                "SmartTransaction", "data"
+                );
+            string bankFolder = Path.Combine(
+                fileFolder,
+                //   AdFunction.GetCleanCode(user_dto.Result.BodycorpCode[0])
+                "SmartTransaction", "bank"
+                );
+
+            string foldername = Request.Form["HiddenFoldername"];
+            string documentname = Request.Form["HiddenDocumentname"];
+            
+            FileInfo fi = new FileInfo(documentname);
+            string filenameP = Path.GetFileNameWithoutExtension(fi.Name);
+            string date = filenameP.Substring(filenameP.Length - 8);
+
+            string target = Path.Combine(
+                dataFolder,
+                foldername + "PaymentApproval" + date + ".csv" //WestpacPaymentApproval20200719.csv
+                );
+
+            using (var stream = new FileStream(target, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+
+            #region trigger SMS
+            int maxRetry = 5;
+            int retry = 0;
+            CookieCollection cookie = new CookieCollection();
+            Spider sp = new Spider();
+
+            string smsHost = _appConfiguration.GetConnectionString("smsHost");
+            string smsLoginPostFirstLine = _appConfiguration.GetConnectionString("smsLoginPostFirstLine");
+            string smsUserName = _appConfiguration.GetConnectionString("smsUserName");
+            string smsUserPassword = _appConfiguration.GetConnectionString("smsUserPassword");
+            string smsLoginSelectedBcId = _appConfiguration.GetConnectionString("smsLoginSelectedBcId");
+            string ButtonLogin = _appConfiguration.GetConnectionString("ButtonLogin");
+
+            if (smsHost.Contains("/"))      //      localhost/sapp_sms2
+            {
+                int charLocation = smsHost.IndexOf("/", StringComparison.Ordinal);
+
+                if (charLocation > 0)
+                {
+                    Spider.gHost = smsHost.Substring(0, charLocation);
+                }
+            }
+            else
+            {
+                Spider.gHost = smsHost;     //          localhost:32553 
+            }
+
+            string test = sp.sendRequest("http://" + smsHost + "/login.aspx",
+                "POST",
+                "",
+                true,
+                smsLoginPostFirstLine
+                + smsUserName + "&TextBoxPassword="
+                + smsUserPassword + "&bcSearchBox=&DropDownList1=" + smsLoginSelectedBcId + "&ButtonLogin=" + ButtonLogin,
+                ref cookie,
+                Spider.gHost,
+                true
+                );
+
+            test = sp.sendRequest("http://" + smsHost + "/cinvoicebatch.aspx?smarttransaction=approve&bank="
+                     + foldername + "&date=" + date,
+                 "GET",
+                 "",
+                 true,
+                 @"",
+                 ref cookie,
+                 Spider.gHost,
+                 true
+                 );
+            #endregion
+
+            TempData["Message"] = string.Format("All done. Succeed to update transactions!");
+            return RedirectToAction("ProcessedTransaction");
+        }
+
     }
 }

@@ -25,3 +25,35 @@ D:\Project\running\AzureIoT\AbpPortal\aspnet-core\src\AzureIoTPortal.Web.Host\ob
 D:\Project\running\AzureIoT\AbpPortal\aspnet-core\src\AzureIoTPortal.Web.Host\obj\Debug\netcoreapp2.2\AzureIoTPortal.Web.Host.csproj.CopyComplete
 D:\Project\running\AzureIoT\AbpPortal\aspnet-core\src\AzureIoTPortal.Web.Host\obj\Debug\netcoreapp2.2\AzureIoTPortal.Web.Host.dll
 D:\Project\running\AzureIoT\AbpPortal\aspnet-core\src\AzureIoTPortal.Web.Host\obj\Debug\netcoreapp2.2\AzureIoTPortal.Web.Host.pdb
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\app.config
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\log4net.config
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\web.config
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\appsettings.Staging.json
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\wwwroot\swagger\ui\index.html
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\Dockerfile
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\AzureIoTPortal.Web.Host.dll.config
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\AzureIoTPortal.Web.Host.deps.json
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\AzureIoTPortal.Web.Host.runtimeconfig.json
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\AzureIoTPortal.Web.Host.runtimeconfig.dev.json
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\AzureIoTPortal.Web.Host.dll
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\AzureIoTPortal.Web.Host.pdb
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\AzureIoTPortal.Application.dll
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\AzureIoTPortal.Core.dll
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\AzureIoTPortal.EntityFrameworkCore.dll
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\AzureIoTPortal.Web.Core.dll
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\AzureIoTPortal.Web.Core.pdb
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\AzureIoTPortal.Application.pdb
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\AzureIoTPortal.Core.pdb
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\AzureIoTPortal.EntityFrameworkCore.pdb
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\bin\Debug\netcoreapp2.2\AzureIoTPortal.EntityFrameworkCore.dll.config
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\obj\Debug\netcoreapp2.2\AzureIoTPortal.Web.Host.csprojAssemblyReference.cache
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\obj\Debug\netcoreapp2.2\AzureIoTPortal.Web.Host.RazorAssemblyInfo.cache
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\obj\Debug\netcoreapp2.2\AzureIoTPortal.Web.Host.RazorAssemblyInfo.cs
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\obj\Debug\netcoreapp2.2\AzureIoTPortal.Web.Host.AssemblyInfoInputs.cache
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\obj\Debug\netcoreapp2.2\AzureIoTPortal.Web.Host.AssemblyInfo.cs
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\obj\Debug\netcoreapp2.2\AzureIoTPortal.Web.Host.RazorTargetAssemblyInfo.cache
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\obj\Debug\netcoreapp2.2\AzureIoTPortal.Web.Host.csproj.CopyComplete
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\obj\Debug\netcoreapp2.2\AzureIoTPortal.Web.Host.dll
+C:\Users\Teemo\Documents\Visual Studio 2015\Projects\SmartTransaction\aspnet-core\src\AzureIoTPortal.Web.Host\obj\Debug\netcoreapp2.2\AzureIoTPortal.Web.Host.pdb

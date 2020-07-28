@@ -34,7 +34,7 @@ namespace AzureIoTPortal.Web.Controllers
         private readonly ISystemConfigAppService _SystemConfigAppService;
 
 
-        private readonly SMSDbContext _dbSMS;
+        //private readonly SMSDbContext _dbSMS;
         //private readonly IRepository<Bodycorp> _BodycorpRepository;
         private readonly IBodycorpAppService _BodycorpAppService;
 
@@ -46,7 +46,7 @@ namespace AzureIoTPortal.Web.Controllers
 
 
         public IoTController(IDeviceAppService deviceAppServcie,ISystemConfigAppService systemConfigAppService
-            ,SMSDbContext dbSMS
+            //,SMSDbContext dbSMS
             //,IRepository<Bodycorp> BodycorpRepository
             , IBodycorpAppService bodycorpAppService
             , IHostingEnvironment env
@@ -59,7 +59,7 @@ namespace AzureIoTPortal.Web.Controllers
             _UserAppService = UserAppService;
 
 
-            _dbSMS = dbSMS;
+            //_dbSMS = dbSMS;
             //_BodycorpRepository = BodycorpRepository;
 
             _appConfiguration = env.GetAppConfiguration();
