@@ -1,2 +1,18 @@
 
 *.lock
+*.ide
+*.pdb
+*.dll
+*.ide-wal
+*.ide-wal
+*.ide-shm
+aspnet-core/src/AzureIoTPortal.Web.Mvc/obj/Debug/netcoreapp2.2/AzureIoTPortal.Web.Mvc.pdb
+aspnet-core/src/AzureIoTPortal.Web.Mvc/obj/Debug/netcoreapp2.2/AzureIoTPortal.Web.Mvc.dll
+aspnet-core/src/AzureIoTPortal.Web.Mvc/bin/Debug/netcoreapp2.2/AzureIoTPortal.Web.Mvc.pdb
+aspnet-core/src/AzureIoTPortal.Web.Mvc/bin/Debug/netcoreapp2.2/AzureIoTPortal.Web.Mvc.dll
+aspnet-core/.vs/AzureIoTPortal/v16/Server/sqlite3/storage.ide-wal
+aspnet-core/.vs/AzureIoTPortal/v16/Server/sqlite3/storage.ide-shm
+aspnet-core/.vs/AzureIoTPortal/v16/Server/sqlite3/storage.ide
+aspnet-core/.vs/AzureIoTPortal/v16/.suo
+aspnet-core/.vs/AzureIoTPortal/DesignTimeBuild/.dtbcache
+aspnet-core/.vs/AzureIoTPortal/v16/Server/sqlite3/storage.ide

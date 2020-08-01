@@ -227,10 +227,18 @@ namespace AzureIoTPortal.Web.Controllers
 
             FileInfo fi = new FileInfo(file);
 
-            //try path without unit code
             if (!fi.Exists)
             {
-
+                bankFolder = Path.Combine(
+                fileFolder,
+                "SmartTransaction", "confirmed"
+                ); 
+                file = Path.Combine(
+                 bankFolder,
+                 foldername, //Westpac or ASB
+                 documentname
+                 );
+                fi = new FileInfo(file);
             }
 
             if (!fi.Exists)
