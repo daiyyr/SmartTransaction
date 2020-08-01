@@ -78,7 +78,8 @@ namespace AzureIoTPortal.Web.Controllers
             public string Name { get; set; }
             public string Date { set; get; }
             public bool New { get; set; }
-            public string By { get; set; } 
+            public string By { get; set; }
+            public string Status { get; set; }
         }
         public class PortalFolder
         {
@@ -357,17 +358,17 @@ namespace AzureIoTPortal.Web.Controllers
                 "SmartTransaction", "processed"
                 );
 
-            DirectoryInfo bcfolderinfo = new DirectoryInfo(processedFolder); // C:/SMS/BC_CODE
+            DirectoryInfo bcfolderinfo = new DirectoryInfo(processedFolder); // C:/SMS/SmartTransaction/processed
             Directory.CreateDirectory(processedFolder);
             DirectoryInfo[] subFolders = bcfolderinfo.GetDirectories().OrderBy(p => p.Name).ToArray();
             List<PortalFolder> folders = new List<PortalFolder>();
-            foreach (DirectoryInfo di in subFolders) // C:/SMS/BC_CODE/Invoice
+            foreach (DirectoryInfo di in subFolders) // C:/SMS/SmartTransaction/processed/ASB07364
             {
                 PortalFolder pf = new PortalFolder();
                 pf.Name = di.Name;
                 List<PortalDocument> docs = new List<PortalDocument>();
                 FileInfo[] files = di.GetFiles().OrderByDescending(p => p.CreationTime).ToArray();
-                foreach (FileInfo file in files) // C:/SMS/BC_CODE/Invoice/INV0728.pdf
+                foreach (FileInfo file in files) // C:/SMS/SmartTransaction/processed/ASB07364/xxxxxxx.csv
                 {
                     docs.Add(
                         new PortalDocument
@@ -375,42 +376,42 @@ namespace AzureIoTPortal.Web.Controllers
                             Name = file.Name,
                             Date = file.CreationTime.ToString("dd/MM/yyyy HH:mm"),
                             New = (DateTime.Now - file.CreationTime).TotalDays < 7,
-                            By = file.GetAccessControl().GetOwner(typeof(System.Security.Principal.NTAccount)).ToString()
+                            By = file.GetAccessControl().GetOwner(typeof(System.Security.Principal.NTAccount)).ToString(),
+                            Status = "Uploaded to bank"
                         }
                     );
                 }
 
-                //try to find unit folder
-                string unitFolder = Path.Combine(
-                    di.FullName,
-                    AdFunction.GetCleanCode(user_dto.Result.UnitCode[0])
-                );//C:/SMS/BC_CODE/Invoice/Unit_Code
-                if (Directory.Exists(unitFolder))
+                string subFolderUnderConfirmed = Path.Combine(
+                fileFolder,
+                "SmartTransaction", "confirmed", di.Name
+                );
+                Directory.CreateDirectory(subFolderUnderConfirmed);
+                DirectoryInfo di2 = new DirectoryInfo(subFolderUnderConfirmed);
+                files = di2.GetFiles().OrderByDescending(p => p.CreationTime).ToArray();
+                foreach (FileInfo file in files) // C:/SMS/SmartTransaction/confirmed/ASB07364/xxxxxxx.csv
                 {
-                    DirectoryInfo di2 = new DirectoryInfo(unitFolder);
-                    FileInfo[] files2 = di2.GetFiles().OrderByDescending(p => p.CreationTime).ToArray();
-                    foreach (FileInfo file in files2)
-                    {
-                        docs.Add(
-                            new PortalDocument
-                            {
-                                Name = file.Name,
-                                Date = file.CreationTime.ToString("dd/MM/yyyy HH:mm"),
-                                New = (DateTime.Now - file.CreationTime).TotalDays < 7,
-                                By = file.GetAccessControl().GetOwner(typeof(System.Security.Principal.NTAccount)).ToString()
-                            }
-                        );
-                    }
+                    docs.Add(
+                        new PortalDocument
+                        {
+                            Name = file.Name,
+                            Date = file.CreationTime.ToString("dd/MM/yyyy HH:mm"),
+                            New = (DateTime.Now - file.CreationTime).TotalDays < 7,
+                            By = file.GetAccessControl().GetOwner(typeof(System.Security.Principal.NTAccount)).ToString(),
+                            Status = "Confirmed"
+                        }
+                    );
                 }
 
                 pf.documents = docs;
                 folders.Add(pf);
             }
-
+            
             ViewBag.folders = folders;
             return View();
         }
 
+        //this function is not in use
         public ActionResult Approve(string foldername, string documentname)
         {
             Odbc o = new Odbc(conn_sms);
@@ -500,7 +501,39 @@ namespace AzureIoTPortal.Web.Controllers
                  true
                  );
             #endregion
-            
+
+
+            #region move file
+            string processedFolder = Path.Combine(
+                fileFolder,
+                //   AdFunction.GetCleanCode(user_dto.Result.BodycorpCode[0])
+                "SmartTransaction", "processed"
+                );
+            string confirmedFolder = Path.Combine(
+                            fileFolder,
+                            //   AdFunction.GetCleanCode(user_dto.Result.BodycorpCode[0])
+                            "SmartTransaction", "confirmed"
+                            );
+            Directory.CreateDirectory(Path.Combine(processedFolder, foldername));
+            Directory.CreateDirectory(Path.Combine(confirmedFolder, foldername));
+            string source = Path.Combine(
+                processedFolder,
+                foldername, //ASB3244
+                documentname
+                );
+            target = Path.Combine(
+                confirmedFolder,
+                foldername, //ASB3244
+                documentname
+                );
+            if (System.IO.File.Exists(target))
+            {
+                System.IO.File.Delete(target);
+            }
+            System.IO.File.Move(source, target);
+
+            #endregion
+
 
             return RedirectToAction("ProcessedTransaction", "Documents");
         }
@@ -600,6 +633,38 @@ namespace AzureIoTPortal.Web.Controllers
                  true
                  );
             #endregion
+
+            #region move file
+            string processedFolder = Path.Combine(
+                fileFolder,
+                //   AdFunction.GetCleanCode(user_dto.Result.BodycorpCode[0])
+                "SmartTransaction", "processed"
+                );
+            string confirmedFolder = Path.Combine(
+                            fileFolder,
+                            //   AdFunction.GetCleanCode(user_dto.Result.BodycorpCode[0])
+                            "SmartTransaction", "confirmed"
+                            );
+            Directory.CreateDirectory(Path.Combine(processedFolder, foldername));
+            Directory.CreateDirectory(Path.Combine(confirmedFolder, foldername));
+            string source = Path.Combine(
+                processedFolder,
+                foldername, //ASB3244
+                documentname
+                );
+            target = Path.Combine(
+                confirmedFolder,
+                foldername, //ASB3244
+                documentname
+                );
+            if (System.IO.File.Exists(target))
+            {
+                System.IO.File.Delete(target);
+            }
+            System.IO.File.Move(source, target);
+
+            #endregion
+
 
             TempData["Message"] = string.Format("All done. Succeed to update transactions!");
             return RedirectToAction("ProcessedTransaction");

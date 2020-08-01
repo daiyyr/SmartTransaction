@@ -119,30 +119,30 @@
                                             <td><a href='@Url.Action("DownloadProcessed", "Documents", new { foldername = folder.Name, documentname = @doc.Name })'>@doc.Name</a></td>
                                             <td>@doc.Date</td>
                                             <td>
-                                                @if (doc.New)
-                                                {
-                                                    <span class="label label-danger">New</span>
-                                                }
+                                                @doc.Status
                                             </td>
                                             <td>@doc.By</td>
                                             <td>
-                                                <form asp-controller="Documents" asp-action="Approve" method="post" enctype="multipart/form-data">
-                                                    <input name="HiddenFoldername" style="display:none" value="@folder.Name" />
-                                                    <input name="HiddenDocumentname" style="display:none" value="@doc.Name" />
+                                                @if (doc.Status != "Confirmed")
+                                                {
+                                                    <form asp-controller="Documents" asp-action="Approve" method="post" enctype="multipart/form-data">
+                                                        <input name="HiddenFoldername" style="display:none" value="@folder.Name" />
+                                                        <input name="HiddenDocumentname" style="display:none" value="@doc.Name" />
 
-                                                    <div class="input-group">
-                                                        <div class="custom-file" style="display:flex">
+                                                        <div class="input-group">
+                                                            <div class="custom-file" style="display:flex">
 
-                                                            <input type="file" class="custom-file-input" name="file" style="width: 200px;">
-                                                            @*<label class="custom-file-label" for="exampleInputFile">Choose Decline List</label>*@
-                                                            @*<a class="btn btn-primary" href='@Url.Action("Approve", "Documents", new { foldername = folder.Name, documentname = @doc.Name })'>Upload</a>*@
-                                                            <button type="submit" class="btn btn-primary">Upload</button>
+                                                                <input type="file" class="custom-file-input" name="file" style="width: 200px;">
+                                                                @*<label class="custom-file-label" for="exampleInputFile">Choose Decline List</label>*@
+                                                                @*<a class="btn btn-primary" href='@Url.Action("Approve", "Documents", new { foldername = folder.Name, documentname = @doc.Name })'>Upload</a>*@
+                                                                <button type="submit" class="btn btn-primary">Upload</button>
+
+                                                            </div>
 
                                                         </div>
 
-                                                    </div>
-
-                                                </form>
+                                                    </form>
+                                                }
                                             </td>
                                         </tr>
                                     }
